@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace ProyectoDecimales;
 
 class Program
@@ -27,10 +29,25 @@ class Program
         } while (opcion != "0");
     }
 
-    // TODO: Redondear al alza
+    // Lee un número con decimales. Acepta coma (3,7) o punto (3.7) y lo vuelve a pedir si no es válido.
+    static double LeerDecimal(string mensaje)
+    {
+        while (true)
+        {
+            Console.Write(mensaje);
+            string texto = (Console.ReadLine() ?? "").Trim().Replace(',', '.');
+            if (double.TryParse(texto, NumberStyles.Float, CultureInfo.InvariantCulture, out double numero))
+                return numero;
+            Console.WriteLine("Eso no es un número válido, inténtalo de nuevo.");
+        }
+    }
+
+    // Redondear al alza: sube al entero de arriba. 3,2 -> 4 y -3,7 -> -3
     static void RedondearAlAlza()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        double x = LeerDecimal("Escribe un número con decimales: ");
+        double resultado = Math.Ceiling(x);
+        Console.WriteLine($"{x} redondeado al alza es {resultado}");
     }
 
     // TODO: Eliminar los decimales

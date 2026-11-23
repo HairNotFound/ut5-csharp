@@ -50,10 +50,12 @@ class Program
         Console.WriteLine($"{x} redondeado al alza es {resultado}");
     }
 
-    // TODO: Eliminar los decimales
+    // Eliminar los decimales: corta lo de después de la coma, sin redondear. 3,9 -> 3 y -3,7 -> -3
     static void EliminarDecimales()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        double x = LeerDecimal("Escribe un número con decimales: ");
+        double resultado = Math.Truncate(x);
+        Console.WriteLine($"{x} sin decimales es {resultado}");
     }
 
     // TODO: Ecuación de segundo grado

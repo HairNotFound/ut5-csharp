@@ -143,10 +143,29 @@ class Program
         Console.WriteLine($"Ordenado: {string.Join(", ", numeros)}");
     }
 
-    // TODO: Calcular la desviación típica
+    // Calcular la desviación típica (poblacional: se divide entre N)
     static void CalcularDesviacionTipica()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        int suma = 0;
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            suma += numeros[i];
+        }
+        double media = (double)suma / numeros.Length;
+
+        double sumaCuadrados = 0;
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            sumaCuadrados += Math.Pow(numeros[i] - media, 2);
+        }
+        double desviacion = Math.Sqrt(sumaCuadrados / numeros.Length);
+        Console.WriteLine($"La desviación típica es {desviacion:F2}");
     }
 
     // TODO: Binarizar en base a un número n

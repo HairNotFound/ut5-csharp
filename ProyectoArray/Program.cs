@@ -113,10 +113,17 @@ class Program
         Console.WriteLine($"La media es {media:F2}");
     }
 
-    // TODO: Ordenar de menor a mayor
+    // Ordenar de menor a mayor
     static void OrdenarArray()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        Array.Sort(numeros);
+        Console.WriteLine($"Ordenado: {string.Join(", ", numeros)}");
     }
 
     // TODO: Calcular la desviación típica

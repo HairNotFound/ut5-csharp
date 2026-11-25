@@ -35,6 +35,20 @@ class Program
         } while (opcion != "0");
     }
 
+    // Pide por teclado cuántos números hay y los lee uno a uno
+    static int[] LeerArray()
+    {
+        Console.Write("¿Cuántos números vas a escribir? ");
+        int cantidad = int.Parse(Console.ReadLine()!);
+        int[] numeros = new int[cantidad];
+        for (int i = 0; i < cantidad; i++)
+        {
+            Console.Write($"Número {i + 1}: ");
+            numeros[i] = int.Parse(Console.ReadLine()!);
+        }
+        return numeros;
+    }
+
     // TODO: Calcular máximo
     static void CalcularMaximo()
     {

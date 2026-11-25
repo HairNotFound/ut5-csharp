@@ -168,9 +168,29 @@ class Program
         Console.WriteLine($"La desviación típica es {desviacion:F2}");
     }
 
-    // TODO: Binarizar en base a un número n
+    // Binarizar en base a un número n: 0 si es menor que n, 1 si no
     static void BinarizarArray()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        Console.Write("Valor de n: ");
+        int n = int.Parse(Console.ReadLine()!);
+        int[] resultado = new int[numeros.Length];
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            if (numeros[i] < n)
+            {
+                resultado[i] = 0;
+            }
+            else
+            {
+                resultado[i] = 1;
+            }
+        }
+        Console.WriteLine($"Binarizado: {string.Join(", ", resultado)}");
     }
 }

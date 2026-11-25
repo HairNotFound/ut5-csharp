@@ -58,9 +58,36 @@ class Program
         Console.WriteLine($"{x} sin decimales es {resultado}");
     }
 
-    // TODO: Ecuación de segundo grado
+    // Ecuación de segundo grado ax² + bx + c = 0 con x = (-b ± √d) / 2a, donde d = b² - 4ac
     static void EcuacionSegundoGrado()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        double a = LeerDecimal("a: ");
+        double b = LeerDecimal("b: ");
+        double c = LeerDecimal("c: ");
+
+        if (a == 0)
+        {
+            Console.WriteLine("No es de segundo grado (a no puede ser 0).");
+            return;
+        }
+
+        double d = b * b - 4 * a * c;   // el discriminante
+
+        if (d < 0)
+        {
+            // Discriminante negativo: la raíz de un número negativo no existe en los reales
+            Console.WriteLine($"No tiene solución real (el discriminante es {d}, negativo).");
+        }
+        else if (d == 0)
+        {
+            double x = -b / (2 * a);
+            Console.WriteLine($"Una solución: x = {x}");
+        }
+        else
+        {
+            double x1 = (-b + Math.Sqrt(d)) / (2 * a);
+            double x2 = (-b - Math.Sqrt(d)) / (2 * a);
+            Console.WriteLine($"Dos soluciones: x1 = {x1}, x2 = {x2}");
+        }
     }
 }

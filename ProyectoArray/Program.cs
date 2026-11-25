@@ -89,10 +89,27 @@ class Program
         Console.WriteLine($"El mínimo es {minimo}");
     }
 
-    // TODO: Calcular la mediana
+    // Calcular la mediana
     static void CalcularMediana()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        Array.Sort(numeros);
+        int mitad = numeros.Length / 2;
+        double mediana;
+        if (numeros.Length % 2 != 0)
+        {
+            mediana = numeros[mitad];
+        }
+        else
+        {
+            mediana = (numeros[mitad - 1] + numeros[mitad]) / 2.0;
+        }
+        Console.WriteLine($"La mediana es {mediana:F2}");
     }
 
     // Calcular la media
@@ -113,16 +130,42 @@ class Program
         Console.WriteLine($"La media es {media:F2}");
     }
 
-    // TODO: Ordenar de menor a mayor
+    // Ordenar de menor a mayor
     static void OrdenarArray()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        Array.Sort(numeros);
+        Console.WriteLine($"Ordenado: {string.Join(", ", numeros)}");
     }
 
-    // TODO: Calcular la desviación típica
+    // Calcular la desviación típica (poblacional: se divide entre N)
     static void CalcularDesviacionTipica()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        int suma = 0;
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            suma += numeros[i];
+        }
+        double media = (double)suma / numeros.Length;
+
+        double sumaCuadrados = 0;
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            sumaCuadrados += Math.Pow(numeros[i] - media, 2);
+        }
+        double desviacion = Math.Sqrt(sumaCuadrados / numeros.Length);
+        Console.WriteLine($"La desviación típica es {desviacion:F2}");
     }
 
     // TODO: Binarizar en base a un número n

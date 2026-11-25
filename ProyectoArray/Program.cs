@@ -49,16 +49,44 @@ class Program
         return numeros;
     }
 
-    // TODO: Calcular máximo
+    // Calcular máximo
     static void CalcularMaximo()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        int maximo = numeros[0];
+        for (int i = 1; i < numeros.Length; i++)
+        {
+            if (numeros[i] > maximo)
+            {
+                maximo = numeros[i];
+            }
+        }
+        Console.WriteLine($"El máximo es {maximo}");
     }
 
-    // TODO: Calcular mínimo
+    // Calcular mínimo
     static void CalcularMinimo()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        int minimo = numeros[0];
+        for (int i = 1; i < numeros.Length; i++)
+        {
+            if (numeros[i] < minimo)
+            {
+                minimo = numeros[i];
+            }
+        }
+        Console.WriteLine($"El mínimo es {minimo}");
     }
 
     // TODO: Calcular la mediana
@@ -67,10 +95,22 @@ class Program
         Console.WriteLine("Pendiente de implementar.");
     }
 
-    // TODO: Calcular la media
+    // Calcular la media
     static void CalcularMedia()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        int suma = 0;
+        for (int i = 0; i < numeros.Length; i++)
+        {
+            suma += numeros[i];
+        }
+        double media = (double)suma / numeros.Length;
+        Console.WriteLine($"La media es {media:F2}");
     }
 
     // TODO: Ordenar de menor a mayor

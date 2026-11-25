@@ -89,10 +89,27 @@ class Program
         Console.WriteLine($"El mínimo es {minimo}");
     }
 
-    // TODO: Calcular la mediana
+    // Calcular la mediana
     static void CalcularMediana()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        int[] numeros = LeerArray();
+        if (numeros.Length == 0)
+        {
+            Console.WriteLine("No has escrito ningún número.");
+            return;
+        }
+        Array.Sort(numeros);
+        int mitad = numeros.Length / 2;
+        double mediana;
+        if (numeros.Length % 2 != 0)
+        {
+            mediana = numeros[mitad];
+        }
+        else
+        {
+            mediana = (numeros[mitad - 1] + numeros[mitad]) / 2.0;
+        }
+        Console.WriteLine($"La mediana es {mediana:F2}");
     }
 
     // Calcular la media

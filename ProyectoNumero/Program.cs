@@ -79,16 +79,30 @@ class Program
         Console.WriteLine($"{n}! = {resultado}");
     }
 
-    // TODO: Segundos a horas, minutos y segundos
+    // Segundos a horas, minutos y segundos
     static void SegundosAHorasMinutos()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        long segundos = LeerEntero("Escribe los segundos: ");
+        long horas = segundos / 3600;
+        long minutos = (segundos % 3600) / 60;
+        long resto = segundos % 60;
+        Console.WriteLine($"{horas} h, {minutos} min y {resto} s");
     }
 
-    // TODO: Primeros 15 números de la serie de Pell
+    // Primeros 15 números de la serie de Pell
     static void SeriePell()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        long antes = 0;
+        long anterior = 1;
+        Console.Write($"{antes}, {anterior}");
+        for (int i = 0; i < 13; i++)
+        {
+            long siguiente = 2 * anterior + antes;
+            Console.Write($", {siguiente}");
+            antes = anterior;
+            anterior = siguiente;
+        }
+        Console.WriteLine();
     }
 
     // TODO: ¿Es número de Armstrong?

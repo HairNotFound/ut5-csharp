@@ -105,15 +105,51 @@ class Program
         Console.WriteLine();
     }
 
-    // TODO: ¿Es número de Armstrong?
+    // ¿Es número de Armstrong?
     static void EsArmstrong()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        long n = LeerEntero("Escribe un número: ");
+
+        // Cuento las cifras sobre una copia, porque el bucle la va destruyendo
+        long copia = n;
+        int cifras = 0;
+        do
+        {
+            cifras++;
+            copia = copia / 10;
+        } while (copia > 0);
+
+        // Sumo cada cifra elevada al número de cifras
+        double suma = 0;
+        copia = n;
+        while (copia > 0)
+        {
+            long cifra = copia % 10;
+            suma = suma + Math.Pow(cifra, cifras);
+            copia = copia / 10;
+        }
+
+        if (suma == n) Console.WriteLine($"{n} sí es un número de Armstrong");
+        else Console.WriteLine($"{n} no es un número de Armstrong");
     }
 
-    // TODO: ¿Tiene todos sus dígitos diferentes?
+    // ¿Tiene todos sus dígitos diferentes?
     static void DigitosDiferentes()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        long n = LeerEntero("Escribe un número: ");
+        string t = n.ToString();
+        bool diferentes = true;
+        for (int i = 0; i < t.Length; i++)
+        {
+            for (int j = i + 1; j < t.Length; j++)
+            {
+                if (t[i] == t[j])
+                {
+                    diferentes = false;
+                }
+            }
+        }
+        if (diferentes) Console.WriteLine($"{n} tiene todos sus dígitos diferentes");
+        else Console.WriteLine($"{n} no tiene todos sus dígitos diferentes");
     }
 }

@@ -33,16 +33,50 @@ class Program
         } while (opcion != "0");
     }
 
-    // TODO: ¿Es primo?
-    static void EsPrimo()
+    // Escribe el mensaje, lee lo que teclea el usuario y lo devuelve como número
+    static long LeerEntero(string mensaje)
     {
-        Console.WriteLine("Pendiente de implementar.");
+        Console.Write(mensaje);
+        return long.Parse(Console.ReadLine()!);
     }
 
-    // TODO: Calcular el factorial
+    // ¿Es primo?
+    static void EsPrimo()
+    {
+        long n = LeerEntero("Escribe un número: ");
+        bool primo = true;
+        if (n <= 1) primo = false;
+        for (long d = 2; d * d <= n; d++)
+        {
+            if (n % d == 0)
+            {
+                primo = false;
+            }
+        }
+        if (primo) Console.WriteLine($"{n} es primo");
+        else Console.WriteLine($"{n} no es primo");
+    }
+
+    // Calcular el factorial
     static void CalcularFactorial()
     {
-        Console.WriteLine("Pendiente de implementar.");
+        long n = LeerEntero("Escribe un número: ");
+        if (n < 0)
+        {
+            Console.WriteLine("No existe el factorial de un número negativo");
+            return;
+        }
+        if (n > 20)
+        {
+            Console.WriteLine("El número es demasiado grande (como mucho 20)");
+            return;
+        }
+        long resultado = 1;
+        for (long i = 2; i <= n; i++)
+        {
+            resultado = resultado * i;
+        }
+        Console.WriteLine($"{n}! = {resultado}");
     }
 
     // TODO: Segundos a horas, minutos y segundos
